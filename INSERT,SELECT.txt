@@ -1,0 +1,80 @@
+
+mysql> desc ram;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| id    | int(11) | YES  |     | NULL    |       |
+| age   | int(11) | YES  |     | NULL    |       |
++-------+---------+------+-----+---------+-------+
+2 rows in set (0.06 sec)
+
+mysql> insert into ram values(1234, 13);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into ram values(4321, 8);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> desc ram;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| id    | int(11) | YES  |     | NULL    |       |
+| age   | int(11) | YES  |     | NULL    |       |
++-------+---------+------+-----+---------+-------+
+2 rows in set (0.02 sec)
+
+mysql> alter table ram add check(age>=10);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from ram;
++------+------+
+| id   | age  |
++------+------+
+| 1234 |   13 |
+| 4321 |    8 |
++------+------+
+2 rows in set (0.00 sec)
+
+mysql> insert into ram values(3421, 12);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into ram values(3423, 15);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into ram values(3473, 07);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select*from ram;
++------+------+
+| id   | age  |
++------+------+
+| 1234 |   13 |
+| 4321 |    8 |
+| 3421 |   12 |
+| 3423 |   15 |
+| 3473 |    7 |
++------+------+
+5 rows in set (0.00 sec)
+
+mysql> alter table ram add check(age>=10);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+mysql> insert into student values(1234,"Ram",4642,"khmm","male");
+Query OK, 1 row affected (0.06 sec)
+mysql> insert into student values(3213,"Anu",3432,"kdpa","female");
+Query OK, 1 row affected (0.01 sec)
+mysql> insert into student values(3287,"Koushik",3472,"nell","male");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from students;
+ERROR 1146 (42S02): Table 'studentinfo.students' doesn't exist
+mysql> select*from student;
++------+---------+-----------+---------+--------+
+| id   | name    | phnnumber | address | gender |
++------+---------+-----------+---------+--------+
+| 1234 | Ram     |      4642 | khmm    | male   |
+| 3213 | Anu     |      3432 | kdpa    | female |
+| 3287 | Koushik |      3472 | nell    | male   |
++------+---------+-----------+---------+--------+
+3 rows in set (0.00 sec)

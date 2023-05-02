@@ -1,0 +1,143 @@
+mysql> select*from ram;
++------+------+
+| id   | age  |
++------+------+
+| 1234 |   13 |
+| 4321 |    8 |
+| 3421 |   12 |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> select*from student;
++------+-------+-----------+---------+--------+
+| id   | name  | phnnumber | address | gender |
++------+-------+-----------+---------+--------+
+| 1234 | Ram   |      4642 | khmm    | male   |
+| 3213 | Anu   |      3432 | hyd     | female |
+| 3287 | laxmi |      3472 | hyd     | female |
++------+-------+-----------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> delete from student where name=laxmi;
+ERROR 1054 (42S22): Unknown column 'laxmi' in 'where clause'
+mysql> delete from student where name='laxmi';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from student;
++------+------+-----------+---------+--------+
+| id   | name | phnnumber | address | gender |
++------+------+-----------+---------+--------+
+| 1234 | Ram  |      4642 | khmm    | male   |
+| 3213 | Anu  |      3432 | hyd     | female |
++------+------+-----------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select*from ram
+    -> where age<10;
++------+------+
+| id   | age  |
++------+------+
+| 4321 |    8 |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> select*from student where gender=female;
+ERROR 1054 (42S22): Unknown column 'female' in 'where clause'
+mysql> select*from student where gender='female';
++------+------+-----------+---------+--------+
+| id   | name | phnnumber | address | gender |
++------+------+-----------+---------+--------+
+| 3213 | Anu  |      3432 | hyd     | female |
++------+------+-----------+---------+--------+
+1 row in set (0.00 sec)
+mysql> insert into student values(2343, "ramu", 6447, "del", "male");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into student values(9903, "priya", 3534,"del","female");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select*from student;
++------+-------+-----------+---------+--------+
+| id   | name  | phnnumber | address | gender |
++------+-------+-----------+---------+--------+
+| 1234 | Ram   |      4642 | khmm    | male   |
+| 2343 | ramu  |      6447 | del     | male   |
+| 3213 | Anu   |      3432 | hyd     | female |
+| 9903 | priya |      3534 | del     | female |
++------+-------+-----------+---------+--------+
+4 rows in set (0.00 sec)
+mysql> use studentinfo;
+Database changed
+mysql> show tables;
++-----------------------+
+| Tables_in_studentinfo |
++-----------------------+
+| college               |
+| faculty               |
+| ram                   |
+| student               |
++-----------------------+
+4 rows in set (0.00 sec)
+
+mysql> create table test(id int, grade char);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show*from test;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*from test' at line 1
+mysql> insert into test values(1234,"A");
+Query OK, 1 row affected (0.06 sec)
+mysql> insert into test values(3432,"A");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into test values(3472,"A");
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into test values(3470,"A");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select*from test;
++------+-------+
+| id   | grade |
++------+-------+
+| 1234 | A     |
+| 3432 | A     |
+| 3472 | A     |
+| 3470 | A     |
++------+-------+
+4 rows in set (0.00 sec)
+mysql> insert into test  values(7535,"B");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into test  values(7885,"B");
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into test  values(7888,"B");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> seclect*from test;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'seclect*from test' at line 1
+mysql> select*from test;
++------+-------+
+| id   | grade |
++------+-------+
+| 1234 | A     |
+| 3432 | A     |
+| 3472 | A     |
+| 3470 | A     |
+| 7535 | B     |
+| 7885 | B     |
+| 7888 | B     |
++------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select from test where grade="B";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from test where grade="B"' at line 1
+mysql> select*from test where grade="B";
++------+-------+
+| id   | grade |
++------+-------+
+| 7535 | B     |
+| 7885 | B     |
+| 7888 | B     |
++------+-------+
+3 rows in set (0.00 sec)

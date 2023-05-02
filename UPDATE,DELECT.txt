@@ -1,0 +1,103 @@
+
+mysql> update student
+    -> set name = 'laxmi', address ='vjd'
+    -> where id = 3287;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from student;
++------+-------+-----------+---------+--------+
+| id   | name  | phnnumber | address | gender |
++------+-------+-----------+---------+--------+
+| 1234 | Ram   |      4642 | khmm    | male   |
+| 3213 | Anu   |      3432 | kdpa    | female |
+| 3287 | laxmi |      3472 | vjd     | male   |
++------+-------+-----------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> update student
+    -> set gender = 'female'
+    -> where id = 3287;
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from student;
++------+-------+-----------+---------+--------+
+| id   | name  | phnnumber | address | gender |
++------+-------+-----------+---------+--------+
+| 1234 | Ram   |      4642 | khmm    | male   |
+| 3213 | Anu   |      3432 | kdpa    | female |
+| 3287 | laxmi |      3472 | vjd     | female |
++------+-------+-----------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> update student
+    -> set address ='hyd'
+    -> where gender = 'female';
+Query OK, 2 rows affected (0.05 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select*from student;
++------+-------+-----------+---------+--------+
+| id   | name  | phnnumber | address | gender |
++------+-------+-----------+---------+--------+
+| 1234 | Ram   |      4642 | khmm    | male   |
+| 3213 | Anu   |      3432 | hyd     | female |
+| 3287 | laxmi |      3472 | hyd     | female |
++------+-------+-----------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql>  delete from ram where age = 15;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select*from ram;
++------+------+
+| id   | age  |
++------+------+
+| 1234 |   13 |
+| 4321 |    8 |
+| 3421 |   12 |
+| 3473 |    7 |
++------+------+
+4 rows in set (0.00 sec)
+
+mysql> delete from ram where =3473;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=3473' at line 1
+mysql> delete from ram where = 3473;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 3473' at line 1
+mysql> delete from ram where id=3473;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select*from ram;
++------+------+
+| id   | age  |
++------+------+
+| 1234 |   13 |
+| 4321 |    8 |
+| 3421 |   12 |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> select*from student;
++------+-------+-----------+---------+--------+
+| id   | name  | phnnumber | address | gender |
++------+-------+-----------+---------+--------+
+| 1234 | Ram   |      4642 | khmm    | male   |
+| 3213 | Anu   |      3432 | hyd     | female |
+| 3287 | laxmi |      3472 | hyd     | female |
++------+-------+-----------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> delete from student where name=laxmi;
+ERROR 1054 (42S22): Unknown column 'laxmi' in 'where clause'
+mysql> delete from student where name='laxmi';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from student;
++------+------+-----------+---------+--------+
+| id   | name | phnnumber | address | gender |
++------+------+-----------+---------+--------+
+| 1234 | Ram  |      4642 | khmm    | male   |
+| 3213 | Anu  |      3432 | hyd     | female |
++------+------+-----------+---------+--------+
+2 rows in set (0.00 sec)

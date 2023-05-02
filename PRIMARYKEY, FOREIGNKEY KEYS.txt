@@ -1,0 +1,125 @@
+mysql> desc student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(11)     | YES  |     | NULL    |       |
+| name      | varchar(89) | YES  |     | NULL    |       |
+| phnnumber | int(11)     | YES  |     | NULL    |       |
+| address   | varchar(89) | YES  |     | NULL    |       |
+| gender    | varchar(78) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> alter table student add primary key(id);
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(11)     | NO   | PRI | 0       |       |
+| name      | varchar(89) | YES  |     | NULL    |       |
+| phnnumber | int(11)     | YES  |     | NULL    |       |
+| address   | varchar(89) | YES  |     | NULL    |       |
+| gender    | varchar(78) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.06 sec)
+
+mysql> create table college(name char, age int, address varchar);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> use employee;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> use studentinfo;
+Database changed
+mysql> show tables;
++-----------------------+
+| Tables_in_studentinfo |
++-----------------------+
+| faculty               |
+| student               |
++-----------------------+
+2 rows in set (0.02 sec)
+
+mysql> create table college(name char(40), year var(20), address(60);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'var(20), address(60)' at line 1
+mysql>
+mysql> create table college(name char(40), year int(4), address varchar(70));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc college;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | char(40)    | YES  |     | NULL    |       |
+| year    | int(4)      | YES  |     | NULL    |       |
+| address | varchar(70) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> alter table student add foreign key(name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> alter table student add foreign key(name) references college(key);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key)' at line 1
+mysql> alter table student add unique key(name);
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(11)     | NO   | PRI | 0       |       |
+| name      | varchar(89) | YES  | UNI | NULL    |       |
+| phnnumber | int(11)     | YES  |     | NULL    |       |
+| address   | varchar(89) | YES  |     | NULL    |       |
+| gender    | varchar(78) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.07 sec)
+
+mysql> alter table student add foreign key(name) references college(name);
+ERROR 1005 (HY000): Can't create table 'studentinfo.#sql-1600_9' (errno: 150)
+mysql> alter table college add foreign key(name) references student(name);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(11)     | NO   | PRI | 0       |       |
+| name      | varchar(89) | YES  | UNI | NULL    |       |
+| phnnumber | int(11)     | YES  |     | NULL    |       |
+| address   | varchar(89) | YES  |     | NULL    |       |
+| gender    | varchar(78) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> desc college;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | char(40)    | YES  | MUL | NULL    |       |
+| year    | int(4)      | YES  |     | NULL    |       |
+| address | varchar(70) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.06 sec)
+
+mysql>  alter table student add check(age>=15);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(11)     | NO   | PRI | 0       |       |
+| name      | varchar(89) | YES  | UNI | NULL    |       |
+| phnnumber | int(11)     | YES  |     | NULL    |       |
+| address   | varchar(89) | YES  |     | NULL    |       |
+| gender    | varchar(78) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
