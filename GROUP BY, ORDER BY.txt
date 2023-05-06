@@ -1,0 +1,80 @@
+mysql> select*from student;
++------+-------+-----------+---------+--------+
+| id   | name  | phnnumber | address | gender |
++------+-------+-----------+---------+--------+
+| 1234 | Ram   |      4642 | khmm    | male   |
+| 2343 | ramu  |      6447 | del     | male   |
+| 3213 | Anu   |      3432 | hyd     | female |
+| 9903 | priya |      3534 | del     | female |
++------+-------+-----------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select*from student order by address;
++------+-------+-----------+---------+--------+
+| id   | name  | phnnumber | address | gender |
++------+-------+-----------+---------+--------+
+| 2343 | ramu  |      6447 | del     | male   |
+| 9903 | priya |      3534 | del     | female |
+| 3213 | Anu   |      3432 | hyd     | female |
+| 1234 | Ram   |      4642 | khmm    | male   |
++------+-------+-----------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select*from student group by addres;
+ERROR 1054 (42S22): Unknown column 'addres' in 'group statement'
+mysql> select*from student group by address;
++------+------+-----------+---------+--------+
+| id   | name | phnnumber | address | gender |
++------+------+-----------+---------+--------+
+| 2343 | ramu |      6447 | del     | male   |
+| 3213 | Anu  |      3432 | hyd     | female |
+| 1234 | Ram  |      4642 | khmm    | male   |
++------+------+-----------+---------+--------+
+3 rows in set (0.06 sec)
+
+mysql> select*from student group by gender;
++------+------+-----------+---------+--------+
+| id   | name | phnnumber | address | gender |
++------+------+-----------+---------+--------+
+| 3213 | Anu  |      3432 | hyd     | female |
+| 1234 | Ram  |      4642 | khmm    | male   |
++------+------+-----------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select*from test group by test;
+ERROR 1054 (42S22): Unknown column 'test' in 'group statement'
+mysql> select*from test group by grade;
++-------+-------+
+| id    | grade |
++-------+-------+
+|  1234 | A     |
+|  7535 | B     |
+|  1234 | c     |
+|  1264 | f     |
+| 12264 | t     |
++-------+-------+
+5 rows in set (0.01 sec)
+
+mysql> select*from student group by phnnumber having phnnumber>6000;
++------+------+-----------+---------+--------+
+| id   | name | phnnumber | address | gender |
++------+------+-----------+---------+--------+
+| 2343 | ramu |      6447 | del     | male   |
++------+------+-----------+---------+--------+
+1 row in set (0.01 sec)
+
+mysql> select*from test group by id where id>3000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where id>3000' at line 1
+mysql> select*from test group by id having id>3000;
++-------+-------+
+| id    | grade |
++-------+-------+
+|  3432 | A     |
+|  3470 | A     |
+|  3472 | A     |
+|  7535 | B     |
+|  7885 | B     |
+|  7888 | B     |
+| 12264 | t     |
++-------+-------+
+7 rows in set (0.00 sec)

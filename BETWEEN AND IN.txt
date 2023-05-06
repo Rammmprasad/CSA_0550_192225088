@@ -1,0 +1,173 @@
+show tables' at line 2
+mysql> show tables;
++-----------------------+
+| Tables_in_studentinfo |
++-----------------------+
+| college               |
+| faculty               |
+| ram                   |
+| student               |
+| test                  |
++-----------------------+
+5 rows in set (0.02 sec)
+
+mysql> select*from college;
+Empty set (0.04 sec)
+
+mysql> select*from ram;
++------+------+
+| id   | age  |
++------+------+
+| 1234 |   13 |
+| 4321 |    8 |
+| 3421 |   12 |
++------+------+
+3 rows in set (0.06 sec)
+
+mysql> select*from student;
++------+-------+-----------+---------+--------+
+| id   | name  | phnnumber | address | gender |
++------+-------+-----------+---------+--------+
+| 1234 | Ram   |      4642 | khmm    | male   |
+| 2343 | ramu  |      6447 | del     | male   |
+| 3213 | Anu   |      3432 | hyd     | female |
+| 9903 | priya |      3534 | del     | female |
++------+-------+-----------+---------+--------+
+4 rows in set (0.06 sec)
+
+mysql> select*from test;
++------+-------+
+| id   | grade |
++------+-------+
+| 1234 | A     |
+| 3432 | A     |
+| 3472 | A     |
+| 3470 | A     |
+| 7535 | B     |
+| 7885 | B     |
+| 7888 | B     |
++------+-------+
+7 rows in set (0.06 sec)
+
+mysql> select*from faculty;
+Empty set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| employee           |
+| mysql              |
+| performance_schema |
+| student            |
+| studentinfo        |
+| test               |
++--------------------+
+mysql> select*from student;
++------+-------+-----------+---------+--------+
+| id   | name  | phnnumber | address | gender |
++------+-------+-----------+---------+--------+
+| 1234 | Ram   |      4642 | khmm    | male   |
+| 2343 | ramu  |      6447 | del     | male   |
+| 3213 | Anu   |      3432 | hyd     | female |
+| 9903 | priya |      3534 | del     | female |
++------+-------+-----------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select*from student
+    -> where gender IN('male');
++------+------+-----------+---------+--------+
+| id   | name | phnnumber | address | gender |
++------+------+-----------+---------+--------+
+| 1234 | Ram  |      4642 | khmm    | male   |
+| 2343 | ramu |      6447 | del     | male   |
++------+------+-----------+---------+--------+
+2 rows in set (0.06 sec)
+
+mysql>  select*from student
+    -> where name BETWEEN'ramu'AND'priya';
+Empty set (0.06 sec)
+
+mysql> select*from student where name between 'ramu' AND 'priya';
+Empty set (0.00 sec)
+
+mysql> select * from student;
++------+-------+-----------+---------+--------+
+| id   | name  | phnnumber | address | gender |
++------+-------+-----------+---------+--------+
+| 1234 | Ram   |      4642 | khmm    | male   |
+| 2343 | ramu  |      6447 | del     | male   |
+| 3213 | Anu   |      3432 | hyd     | female |
+| 9903 | priya |      3534 | del     | female |
++------+-------+-----------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student where name BETWEEN 'Ram' AND 'priya';
+Empty set (0.00 sec)
+
+mysql> select * from student where address BETWEEN 'khmm'AND 'del';
+Empty set (0.00 sec)
+mysql> insert into test values(1264 ,'f');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into test values(12264 ,'t');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from student;
++------+-------+-----------+---------+--------+
+| id   | name  | phnnumber | address | gender |
++------+-------+-----------+---------+--------+
+| 1234 | Ram   |      4642 | khmm    | male   |
+| 2343 | ramu  |      6447 | del     | male   |
+| 3213 | Anu   |      3432 | hyd     | female |
+| 9903 | priya |      3534 | del     | female |
++------+-------+-----------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from test;
++-------+-------+
+| id    | grade |
++-------+-------+
+|  1234 | A     |
+|  3432 | A     |
+|  3472 | A     |
+|  3470 | A     |
+|  7535 | B     |
+|  7885 | B     |
+|  7888 | B     |
+|  1234 | c     |
+|  1264 | f     |
+| 12264 | t     |
++-------+-------+
+10 rows in set (0.00 sec)
+
+mysql> select * from test where grade BETWEEN 'A'AND 'E';
++------+-------+
+| id   | grade |
++------+-------+
+| 1234 | A     |
+| 3432 | A     |
+| 3472 | A     |
+| 3470 | A     |
+| 7535 | B     |
+| 7885 | B     |
+| 7888 | B     |
+| 1234 | c     |
++------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select * from test where grade between 'A' and 'c';
++------+-------+
+| id   | grade |
++------+-------+
+| 1234 | A     |
+| 3432 | A     |
+| 3472 | A     |
+| 3470 | A     |
+| 7535 | B     |
+| 7885 | B     |
+| 7888 | B     |
+| 1234 | c     |
++------+-------+
+8 rows in set (0.00 sec)
